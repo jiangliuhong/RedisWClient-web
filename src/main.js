@@ -9,14 +9,19 @@ Vue.use(VueRouter);
 Vue.use(ElementUI);
 
 const RouterConfig = {
-  mode: 'history',
+    mode: 'history',
     routes: Routers
 };
 
 const router = new VueRouter(RouterConfig);
-
+router.beforeEach((to, from, next) => {
+    if (to.meta.title) {
+        window.document.title = to.meta.title;
+    }
+    next();
+});
 new Vue({
-  el: '#app',
-    router:router,
-  render: h => h(App)
+    el: '#app',
+    router: router,
+    render: h => h(App)
 });
