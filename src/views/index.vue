@@ -50,7 +50,6 @@
 </template>
 <script>
     import NavMenu from '~/views/headMenu'
-
     export default {
         components: {
             'navmenu': NavMenu
