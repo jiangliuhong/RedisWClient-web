@@ -5,8 +5,7 @@ var key = AES.CryptoJS.enc.Utf8.parse("ab1cf4vdg4utk8z0");
 var ivLen = 16;
 
 var generateIv = function () {
-    var ranStr = Random.randomStr(ivLen);
-    return AES.CryptoJS.enc.Utf8.parse(ranStr);
+    return Random.randomStr(ivLen);
 };
 
 /**
@@ -24,7 +23,8 @@ var charFilter = function (str) {
 
 var aes = {
     encrypt: function (data) {
-        var iv = generateIv();
+        var ivStr = generateIv();
+        var iv = AES.CryptoJS.enc.Utf8.parse(ivStr);
         var encrypted = '';
         //string number boolean 判断
         var srcs;
@@ -46,7 +46,10 @@ var aes = {
         } else {
             throw "data type error";
         }
-        return encrypted.ciphertext.toString();
+        var encryptObj = {};
+        encryptObj.iv = ivStr;
+        encryptObj.data = encrypted.ciphertext.toString();
+        return encryptObj;
     },
     decrypt: function (data, iv) {
         var encryptedHexStr = AES.CryptoJS.enc.Hex.parse(data);

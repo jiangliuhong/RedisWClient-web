@@ -24,17 +24,20 @@ var connect = function (method, baseUrl, url, params,data, callback) {
         baseURL: baseUrl,
         url: url,
         params:params,
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
         data: data
     }).then(callback);
 };
 
-var apiConnect = function(method,url,params,data,transformResponse,callback){
+var apiConnect = function(method,url,params,data,transformRequest,transformResponse,callback){
     axios({
         method: method,
         baseURL: configs.default.SERVER.BASE_SERVER,
         url: url,
         params:params,
         data: data,
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        transformRequest:transformRequest,
         transformResponse:transformResponse
     }).then(callback);
 };
@@ -55,7 +58,11 @@ var aesDecodeData = function(dataJsonStr){
 };
 
 var aesEncodeData = function(data){
-    return aes.encrypt(data);
+    if(data == null || data === ''){
+        return null;
+    }
+    var obj = aes.encrypt(data);
+    return JSON.stringify(obj);
 };
 
 var http = {
@@ -67,7 +74,10 @@ var http = {
      */
     api:{
         get: function(url,params,callback){
-            apiConnect(Method.GET,url,params,null,[aesDecodeData],callback);
+            apiConnect(Method.GET,url,params,null,null,[aesDecodeData],callback);
+        },
+        post: function(url,params,data,callback){
+            apiConnect(Method.POST,url,params,data,[aesEncodeData],[aesDecodeData],callback);
         }
     }
 };

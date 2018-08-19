@@ -10,8 +10,6 @@ import configs from './config/config';
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(VueLocalStorage);
-Vue.use(http);
-Vue.use(configs);
 
 const RouterConfig = {
     mode: 'history',
