@@ -1,5 +1,6 @@
 var configs = require('../config/config');
 import axios from 'axios';
+import aes from './AesUitls';
 
 //axios 说明：https://www.kancloud.cn/yunye/axios/234845
 
@@ -39,11 +40,13 @@ var apiConnect = function(method,url,params,data,transformResponse,callback){
 };
 /**
  * 对返回值解析
- * @param data
+ * @param dataJsonStr
  * @returns {*}
  */
-var transformData = function(dataJsonStr){
+var aesDecodeData = function(dataJsonStr){
     var data = JSON.parse(dataJsonStr);
+    data = aes.decrypt(data.data,data.iv);
+    data = JSON.parse(data);
     if(data.code === 0){
         return data.data;
     }
@@ -51,13 +54,20 @@ var transformData = function(dataJsonStr){
     throw data.message;
 };
 
+var aesEncodeData = function(data){
+    return aes.encrypt(data);
+};
+
 var http = {
     get: function (url, params,callback) {
         connect(Method.GET,null,url,params,null,callback);
     },
+    /**
+     * 该类中的方法会对返回数据进行解密操作，同时，会对请求体进行加密
+     */
     api:{
         get: function(url,params,callback){
-            apiConnect(Method.GET,url,params,null,[transformData],callback);
+            apiConnect(Method.GET,url,params,null,[aesDecodeData],callback);
         }
     }
 };

@@ -76,7 +76,7 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
+                        http.api.get()
                     }
                 });
             },
