@@ -17,6 +17,7 @@ const RouterConfig = {
 };
 
 const router = new VueRouter(RouterConfig);
+
 router.beforeEach((to, from, next) => {
     if (to.meta.title) {
         window.document.title = to.meta.title;
@@ -28,12 +29,11 @@ new Vue({
     router: router,
     render: h => h(App),
     mounted() {
-        http.get('https://api.coindesk.com/v1/bpi/currentprice.json');
         http.api.get(configs.API_PATH.SYS_CONFIG,null,function(res){
-            console.log(res);
+            if(res.data.install){
+               //跳转到安装页面
+                router.push({path:'/install'});
+            }
         });
-        // axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(function (res) {
-        //     console.log(res);
-        // });
     }
 });

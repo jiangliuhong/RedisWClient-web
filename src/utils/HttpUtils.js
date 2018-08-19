@@ -47,6 +47,7 @@ var transformData = function(dataJsonStr){
     if(data.code === 0){
         return data.data;
     }
+    //TODO 对code不为0的作特殊化处理
     throw data.message;
 };
 

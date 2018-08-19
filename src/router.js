@@ -1,13 +1,13 @@
 const routers = [
     {
         path: '/',
-        mate: {
+        meta: {
             title:'首页',
         },
         component: (resolve) => require(['./views/index.vue'], resolve)
     },{
         path: '/install',
-        mate: {
+        meta: {
             title:'初始化',
         },
         component: (resolve) => require(['./views/install.vue'], resolve)
