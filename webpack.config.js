@@ -1,8 +1,8 @@
-const resolve = require('path').resolve
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const url = require('url')
-const publicPath = ''
+const resolve = require('path').resolve;
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const url = require('url');
+const publicPath = '';
 
 module.exports = (options = {}) => ({
     entry: {
@@ -16,10 +16,11 @@ module.exports = (options = {}) => ({
         publicPath: options.dev ? '/assets/' : publicPath
     },
     module: {
-        rules: [{
-            test: /\.vue$/,
-            use: ['vue-loader']
-        },
+        rules: [
+            {
+                test: /\.vue$/,
+                use: ['vue-loader']
+            },
             {
                 test: /\.js$/,
                 use: ['babel-loader'],
@@ -28,6 +29,27 @@ module.exports = (options = {}) => ({
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.sass$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            indentedSyntax: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -73,4 +95,4 @@ module.exports = (options = {}) => ({
         }
     },
     devtool: options.dev ? '#eval-source-map' : '#source-map'
-})
+});
