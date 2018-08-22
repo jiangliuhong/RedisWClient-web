@@ -7,6 +7,9 @@ import VueRouter from 'vue-router';
 import VueLocalStorage from 'vue-localstorage'
 import http from './utils/HttpUtils';
 import configs from './config/config';
+require("es6-promise").polyfill();
+// 解决IE 浏览器不识别(IE9+)axios的问题
+
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(VueLocalStorage);

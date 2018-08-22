@@ -1,44 +1,84 @@
-<style>
-    .el-header, .el-footer {
-        background-color: #B3C0D1;
-        color: #333;
-        text-align: center;
+<style lang="scss">
+    html,body,wrapper{
+        height:100%;
+        overflow:hidden;
+    }
+    .el-header{
+        height:100px;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        background-color: rgb(84, 92, 100);
         line-height: 60px;
-        padding: 0;
+        color: #fff;
     }
-
-    .el-aside {
-        background-color: #D3DCE6;
-        color: #333;
-        text-align: center;
-        line-height: 200px;
+    .el-main{
+        position:absolute;
+        left:0;
+        top:100px;
+        bottom:60px;
     }
-
-    .el-main {
-        background-color: #E9EEF3;
-        color: #333;
-        text-align: center;
-        line-height: 160px;
-        padding: 0;
+    .el-footer{
+        position:absolute;
+        left:0;
+        bottom:0;
+        right:0;
+        height:60px;
     }
-
-    body > .el-container {
-        margin-bottom: 40px;
+    .name {
+        height: 60px;
+        font-size: 22px;
+        padding-left: 20px;
+        padding-right: 20px;
+        /*border-color: rgba(238, 241, 146, 0.3);*/
+        /*border-right-width: 1px;*/
+        /*border-right-style: solid;*/
+        img {
+            width: 40px;
+            float: left;
+            margin: 10px 10px 10px 18px;
+        }
+        .txt {
+            color: #fff;
+        }
     }
-
-    .el-container:nth-child(5) .el-aside,
-    .el-container:nth-child(6) .el-aside {
-        line-height: 260px;
-    }
-
-    .el-container:nth-child(7) .el-aside {
-        line-height: 320px;
+    .user {
+        text-align: right;
+        padding-right: 35px;
+        float: right;
+        .userinfo-inner {
+            cursor: pointer;
+            color:#fff;
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                margin: 10px 0px 10px 10px;
+                float: right;
+            }
+        }
     }
 </style>
 <template>
     <el-container>
         <el-header>
-            <navmenu></navmenu>
+            <el-row>
+                <!--<el-col :span="4"><span class="name">RedisWClient</span></el-col>-->
+                <el-col :span="3" class="name">RedisWClient</el-col>
+                <el-col :span="17"><navmenu></navmenu></el-col>
+                <el-col :span="4" class="user">
+                    <el-dropdown trigger="hover">
+                        <span class="el-dropdown-link userinfo-inner"><img src="../assets/image/user.png" /> Admin</span>
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item>我的消息</el-dropdown-item>
+                            <el-dropdown-item>设置</el-dropdown-item>
+                            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
+                </el-col>
+            </el-row>
+
         </el-header>
         <el-main>
             Main
