@@ -81,15 +81,18 @@
 
         </el-header>
         <el-main>
-            Main
+            <router-view></router-view>
         </el-main>
         <el-footer>
-            footer
+            by jiangliuhong
         </el-footer>
     </el-container>
 </template>
 <script>
-    import NavMenu from '~/views/headMenu'
+    import NavMenu from '~/views/headMenu';
+    import router from '../config/router';
+    //console.log($router);
+    router.push({path:'/client/index'});
     export default {
         components: {
             'navmenu': NavMenu

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
-import Routers from './router';
+import router from './config/router';
 import VueRouter from 'vue-router';
 import VueLocalStorage from 'vue-localstorage'
 import http from './utils/HttpUtils';
@@ -13,20 +13,6 @@ require("es6-promise").polyfill();
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(VueLocalStorage);
-
-const RouterConfig = {
-    mode: 'history',
-    routes: Routers
-};
-
-const router = new VueRouter(RouterConfig);
-
-router.beforeEach((to, from, next) => {
-    if (to.meta.title) {
-        window.document.title = to.meta.title;
-    }
-    next();
-});
 
 new Vue({
     el: '#app',
