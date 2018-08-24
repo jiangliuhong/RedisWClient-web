@@ -3,7 +3,7 @@
         height:100%;
         overflow:hidden;
     }
-    .el-header{
+    .header{
         height:100px;
         position:absolute;
         top:0;
@@ -12,19 +12,34 @@
         background-color: rgb(84, 92, 100);
         line-height: 60px;
         color: #fff;
+        padding: 0;
     }
-    .el-main{
+    .main{
         position:absolute;
         left:0;
-        top:100px;
+        top:60px;
         bottom:60px;
+        padding: 0;
+        width: 100%;
     }
-    .el-footer{
+    .footer{
         position:absolute;
         left:0;
         bottom:0;
         right:0;
         height:60px;
+        background-color: rgb(84, 92, 100);
+        text-align: center;
+
+        span{
+            display:block;
+            color: #fff;
+            line-height: 60px;
+            height: 60px;
+            overflow:hidden;
+            font-family:"Helvetica Neue";
+            font-size: 10px;
+        }
     }
     .name {
         height: 60px;
@@ -62,7 +77,7 @@
 </style>
 <template>
     <el-container>
-        <el-header>
+        <el-header class="header">
             <el-row>
                 <!--<el-col :span="4"><span class="name">RedisWClient</span></el-col>-->
                 <el-col :span="3" class="name">RedisWClient</el-col>
@@ -80,11 +95,11 @@
             </el-row>
 
         </el-header>
-        <el-main>
-            <router-view></router-view>
+        <el-main class="main">
+            <router-view style="height: 100%;width: 100%"></router-view>
         </el-main>
-        <el-footer>
-            by jiangliuhong
+        <el-footer class="footer">
+            <span>by jiangliuhong  ,  ja_rome@163.com</span>
         </el-footer>
     </el-container>
 </template>
