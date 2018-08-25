@@ -7,7 +7,7 @@
         width: 200px;
     }
 
-    .leftList{
+    .leftList {
         height: 100%;
     }
 
@@ -18,24 +18,31 @@
         padding: 0;
         width: 100%;
     }
+
+
 </style>
 <template>
     <el-container>
         <el-aside class="leftMenu">
-            <el-tree :data="data" class="leftList" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+            <el-tree :data="dbList" class="leftList" :props="defaultProps" @node-click="handleNodeClick"
+                     :render-content="renderContent"></el-tree>
         </el-aside>
         <el-main class="clientMain">Main</el-main>
     </el-container>
 </template>
 <script>
     export default {
-        data(){
+        data() {
             return {
-                data: [{
+                dbList: [{
+                    type:1,
+                    className: 'el-icon-redis',
                     label: '一级 1',
                     children: [{
+                        className:'el-icon-keys',
                         label: '二级 1-1',
                         children: [{
+                            className:'el-icon-Keys',
                             label: '三级 1-1-1'
                         }]
                     }]
@@ -70,11 +77,14 @@
                     children: 'children',
                     label: 'label'
                 }
-            };
+            }
         },
         methods: {
             handleNodeClick(data) {
                 console.log(data);
+            },
+            renderContent(h, {node, data, store}) {
+                return (<span><i class={data.className}></i><span>{node.label}</span></span>);
             }
         }
     };
