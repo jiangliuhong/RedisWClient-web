@@ -13,6 +13,12 @@ const routers = [
                     title: 'Redis客户端首页',
                 },
                 component: (resolve) => require(['../views/client/index.vue'], resolve)
+            },{
+                path: '/user/index',
+                meta: {
+                    title: '用户首页',
+                },
+                component: (resolve) => require(['../views/user/index.vue'], resolve)
             }
         ]
     }, {

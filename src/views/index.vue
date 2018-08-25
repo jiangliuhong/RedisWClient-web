@@ -46,6 +46,7 @@
         font-size: 22px;
         padding-left: 20px;
         padding-right: 20px;
+        text-align: center;
         /*border-color: rgba(238, 241, 146, 0.3);*/
         /*border-right-width: 1px;*/
         /*border-right-style: solid;*/
@@ -105,9 +106,6 @@
 </template>
 <script>
     import NavMenu from '~/views/headMenu';
-    import router from '../config/router';
-    //console.log($router);
-    router.push({path:'/client/index'});
     export default {
         components: {
             'navmenu': NavMenu
