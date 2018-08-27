@@ -13,16 +13,19 @@
         width: 100%;
         overflow-y: auto;
         box-sizing: border-box;
-        padding-bottom: 60px;
+        padding-bottom: 40px;
         background-color: #FFFFFF;
     }
     .leftFooter{
         position:absolute;
         width: 100%;
-        height: 60px;
+        height: 40px;
         bottom: 0;
         left: 0;
-        background-color:aquamarine;
+        background-color:#FFFFFF;
+        border-top:2px solid #F0F0F0;
+        box-sizing: border-box;
+        /*padding:1px;*/
     }
 
     .clientMain {
@@ -33,6 +36,19 @@
         width: 100%;
     }
 
+    .btnGroup{
+        width: 100%;
+        height: 100%;
+        padding:1px;
+        box-sizing: border-box;
+    }
+
+    .btnGroup button{
+        width: 33.4%;
+        height: 35px;
+        /*background-color: #E9EEF3;*/
+        /*border-color: #E9EEF3;*/
+    }
 
 </style>
 <template>
@@ -42,7 +58,14 @@
                 <el-tree :data="dbList" class="" :props="defaultProps" @node-click="handleNodeClick"
                          :render-content="renderContent"></el-tree>
             </div>
-            <div class="leftFooter">sssss</div>
+            <div class="leftFooter">
+
+                    <el-button-group class="btnGroup">
+                        <el-button type="primary" icon="el-icon-xinzeng">添加</el-button>
+                        <el-button type="primary" icon="el-icon-daoru">导入</el-button>
+                        <el-button type="primary" icon="el-icon-daochu">导出</el-button>
+                    </el-button-group>
+            </div>
         </el-aside>
         <el-main class="clientMain">Main</el-main>
     </el-container>
