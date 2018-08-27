@@ -41,46 +41,6 @@
             <div class="leftList">
                 <el-tree :data="dbList" class="" :props="defaultProps" @node-click="handleNodeClick"
                          :render-content="renderContent"></el-tree>
-                <!--<pre>-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--sss-->
-                        <!--aaa-->
-                    <!--</pre>-->
             </div>
             <div class="leftFooter">sssss</div>
         </el-aside>
