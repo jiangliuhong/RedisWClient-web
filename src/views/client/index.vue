@@ -3,27 +3,26 @@
         background-color: #D3DCE6;
         color: #333;
         text-align: center;
-        /*line-height: 200px;*/
         width: 200px;
-        position:absolute;
+        position: relative;
         height: 100%;
-        /*overflow:hidden;*/
     }
 
     .leftList {
-        /*position:absolute;*/
         height: 100%;
-        bottom:60px;
-        top: 0px;
         width: 100%;
-        /*float: left;*/
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding-bottom: 60px;
+        background-color: #FFFFFF;
     }
-
     .leftFooter{
-        /*position:absolute;*/
+        position:absolute;
         width: 100%;
         height: 60px;
-        /*float: left;*/
+        bottom: 0;
+        left: 0;
+        background-color:aquamarine;
     }
 
     .clientMain {
@@ -40,8 +39,48 @@
     <el-container>
         <el-aside class="leftMenu">
             <div class="leftList">
-                <el-tree :data="dbList" class="" style="height: 100%;" :props="defaultProps" @node-click="handleNodeClick"
-                     :render-content="renderContent"></el-tree>
+                <el-tree :data="dbList" class="" :props="defaultProps" @node-click="handleNodeClick"
+                         :render-content="renderContent"></el-tree>
+                <!--<pre>-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--sss-->
+                        <!--aaa-->
+                    <!--</pre>-->
             </div>
             <div class="leftFooter">sssss</div>
         </el-aside>
