@@ -3,12 +3,27 @@
         background-color: #D3DCE6;
         color: #333;
         text-align: center;
-        line-height: 200px;
+        /*line-height: 200px;*/
         width: 200px;
+        position:absolute;
+        height: 100%;
+        /*overflow:hidden;*/
     }
 
     .leftList {
+        /*position:absolute;*/
         height: 100%;
+        bottom:60px;
+        top: 0px;
+        width: 100%;
+        /*float: left;*/
+    }
+
+    .leftFooter{
+        /*position:absolute;*/
+        width: 100%;
+        height: 60px;
+        /*float: left;*/
     }
 
     .clientMain {
@@ -24,8 +39,11 @@
 <template>
     <el-container>
         <el-aside class="leftMenu">
-            <el-tree :data="dbList" class="leftList" :props="defaultProps" @node-click="handleNodeClick"
+            <div class="leftList">
+                <el-tree :data="dbList" class="" style="height: 100%;" :props="defaultProps" @node-click="handleNodeClick"
                      :render-content="renderContent"></el-tree>
+            </div>
+            <div class="leftFooter">sssss</div>
         </el-aside>
         <el-main class="clientMain">Main</el-main>
     </el-container>
