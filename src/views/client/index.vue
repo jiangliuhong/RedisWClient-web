@@ -59,15 +59,20 @@
                          :render-content="renderContent"></el-tree>
             </div>
             <div class="leftFooter">
-
-                    <el-button-group class="btnGroup">
-                        <el-button type="primary" icon="el-icon-xinzeng">添加</el-button>
-                        <el-button type="primary" icon="el-icon-daoru">导入</el-button>
-                        <el-button type="primary" icon="el-icon-daochu">导出</el-button>
-                    </el-button-group>
+                <el-button-group class="btnGroup">
+                    <el-button type="primary" icon="el-icon-xinzeng">添加</el-button>
+                    <el-button type="primary" icon="el-icon-daoru">导入</el-button>
+                    <el-button type="primary" icon="el-icon-daochu">导出</el-button>
+                </el-button-group>
             </div>
         </el-aside>
-        <el-main class="clientMain">Main</el-main>
+        <el-main class="clientMain">
+            <el-tabs v-model="keyName" type="card" closable @tab-remove="removeTab">
+                <el-tab-pane v-for="(item, index) in keyTabs" :key="item.name" :label="item.title" :name="item.name" >
+                    {{item.content}}
+                </el-tab-pane>
+            </el-tabs>
+        </el-main>
     </el-container>
 </template>
 <script>
@@ -116,7 +121,19 @@
                 defaultProps: {
                     children: 'children',
                     label: 'label'
-                }
+                },
+                keyName:'1',
+                keyTabs:[
+                    {
+                        title: 'Tab 1',
+                        name: '1',
+                        content: 'Tab 1 content'
+                    }, {
+                        title: 'Tab 2',
+                        name: '2',
+                        content: 'Tab 2 content'
+                    }
+                ]
             }
         },
         methods: {
@@ -125,6 +142,31 @@
             },
             renderContent(h, {node, data, store}) {
                 return (<span><i class={data.className}></i><span>{node.label}</span></span>);
+            },
+            addTab(targetName) {
+                let newTabName = ++this.tabIndex + '';
+                this.keyTabs.push({
+                    title: 'New Tab',
+                    name: newTabName,
+                    content: 'New Tab content'
+                });
+                this.keyName = newTabName;
+            },
+            removeTab(targetName) {
+                let tabs = this.keyTabs;
+                let activeName = this.keyName;
+                if (activeName === targetName) {
+                    tabs.forEach((tab, index) => {
+                        if (tab.name === targetName) {
+                            let nextTab = tabs[index + 1] || tabs[index - 1];
+                            if (nextTab) {
+                                activeName = nextTab.name;
+                            }
+                        }
+                    });
+                }
+                this.keyName = activeName;
+                this.keyTabs = tabs.filter(tab => tab.name !== targetName);
             }
         }
     };
