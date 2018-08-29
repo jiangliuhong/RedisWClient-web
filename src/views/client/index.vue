@@ -6,6 +6,7 @@
         width: 200px;
         position: relative;
         height: 100%;
+        border-right: 1px solid #e4e7ed;
     }
 
     .leftList {
@@ -50,6 +51,21 @@
         border-color: #545c64;
     }
 
+    .tabCard{
+        background-color: white;
+        height: 100%;
+    }
+    .tabPane{
+        height: 100%;
+    }
+
+    .el-tabs__header{
+        margin: 0 auto;
+    }
+    .content{
+        padding: 10px;
+     }
+
 </style>
 <template>
     <el-container>
@@ -67,9 +83,26 @@
             </div>
         </el-aside>
         <el-main class="clientMain">
-            <el-tabs v-model="keyName" type="card" closable @tab-remove="removeTab">
-                <el-tab-pane v-for="(item, index) in keyTabs" :key="item.name" :label="item.title" :name="item.name" >
-                    {{item.content}}
+            <el-tabs v-model="keyName" type="card" class="tabCard" closable @tab-remove="removeTab">
+                <el-tab-pane v-for="(item, index) in keyTabs" :key="item.name" :label="item.title" :name="item.name" class="content" >
+                    <el-row>
+                        <el-col style="float: left;">
+                            <span >名称:</span>
+                            <el-input value="sdgsdgdsgsdg" style="width: 300px;margin-left: 10px;" ></el-input>
+                            <el-button>重命名</el-button> <el-button>删除</el-button> <el-button>刷新</el-button>
+                        </el-col>
+                    </el-row>
+                    <div style="width: 100%;height: 100%">
+                        <el-input style="width: 100%;height: 100%"
+                                type="textarea"
+                                placeholder="请输入内容">
+                        </el-input>
+                    </div>
+                   <!--<el-form>-->
+                       <!--<el-form-item label="keyName" label-width="80px" style="width:300px;" >-->
+                           <!--<el-input value="sdgsdgdsgsdg" ></el-input>-->
+                       <!--</el-form-item>-->
+                   <!--</el-form>-->
                 </el-tab-pane>
             </el-tabs>
         </el-main>
@@ -138,7 +171,7 @@
         },
         methods: {
             handleNodeClick(data) {
-                console.log(data);
+               // this.addTab('test');
             },
             renderContent(h, {node, data, store}) {
                 return (<span><i class={data.className}></i><span>{node.label}</span></span>);

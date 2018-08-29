@@ -18,7 +18,7 @@
         position:absolute;
         left:0;
         top:60px;
-        bottom:60px;
+        bottom:40px;
         padding: 0;
         width: 100%;
     }
@@ -27,15 +27,15 @@
         left:0;
         bottom:0;
         right:0;
-        height:60px;
+        height:40px;
         background-color: rgb(84, 92, 100);
         text-align: center;
 
         span{
             display:block;
             color: #fff;
-            line-height: 60px;
-            height: 60px;
+            line-height: 40px;
+            height: 40px;
             overflow:hidden;
             font-family:"Helvetica Neue";
             font-size: 10px;
@@ -99,7 +99,7 @@
         <el-main class="main">
             <router-view style="height: 100%;width: 100%"></router-view>
         </el-main>
-        <el-footer class="footer">
+        <el-footer class="footer" style="height: 40px;">
             <span>by jiangliuhong  ,  ja_rome@163.com</span>
         </el-footer>
     </el-container>
