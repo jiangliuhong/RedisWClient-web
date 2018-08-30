@@ -59,9 +59,6 @@
         height: 100%;
     }
 
-    .el-tabs__header{
-        margin: 0 auto;
-    }
     .content{
         padding: 10px;
      }
@@ -85,24 +82,16 @@
         <el-main class="clientMain">
             <el-tabs v-model="keyName" type="card" class="tabCard" closable @tab-remove="removeTab">
                 <el-tab-pane v-for="(item, index) in keyTabs" :key="item.name" :label="item.title" :name="item.name" class="content" >
-                    <el-row>
-                        <el-col style="float: left;">
+                    <el-row style="float: left;box-sizing: border-box;padding: 0 10px 20px 10px;">
+                        <el-col >
                             <span >名称:</span>
-                            <el-input value="sdgsdgdsgsdg" style="width: 300px;margin-left: 10px;" ></el-input>
-                            <el-button>重命名</el-button> <el-button>删除</el-button> <el-button>刷新</el-button>
+                            <el-input style="width: 300px;margin-left: 10px;" ></el-input>
+                            <span style="padding-left: 10px;"><el-button>重命名</el-button> <el-button>删除</el-button> <el-button>刷新</el-button></span>
                         </el-col>
                     </el-row>
-                    <div style="width: 100%;height: 100%">
-                        <el-input style="width: 100%;height: 100%"
-                                type="textarea"
-                                placeholder="请输入内容">
-                        </el-input>
+                    <div style="width: 100%;height: 100%;padding:10px;box-sizing: border-box;">
+                        <el-input type="textarea" :rows="10" ></el-input>
                     </div>
-                   <!--<el-form>-->
-                       <!--<el-form-item label="keyName" label-width="80px" style="width:300px;" >-->
-                           <!--<el-input value="sdgsdgdsgsdg" ></el-input>-->
-                       <!--</el-form-item>-->
-                   <!--</el-form>-->
                 </el-tab-pane>
             </el-tabs>
         </el-main>
